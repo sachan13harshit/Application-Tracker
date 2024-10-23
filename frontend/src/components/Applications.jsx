@@ -9,10 +9,11 @@ const Applications = () => {
     const [applications, setApplications] = useState([]);
     const [isSpinner, setSpinner] = useState(true);
     const [temp, setTemp] = useState(0);
-  
+    const backendUrl = "http://localhost:5000";
+
     const getData = async () => {
       const config = {
-        url: `${process.env.REACT_APP_BACKEND_LINK}/application/get`,
+        url: `${backendUrl}/application/get`,
         method: "get",
         withCredentials: true,
       };

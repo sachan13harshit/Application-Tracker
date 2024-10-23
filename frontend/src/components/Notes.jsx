@@ -11,7 +11,7 @@ const Notes = () => {
   const [temp, setTemp] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState(false);
-
+  const backendUrl = "http://localhost:5000";
   const {
     register,
     handleSubmit,
@@ -22,7 +22,7 @@ const Notes = () => {
   const addNote = async (note) => {
     setUploading(true);
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/note/add`,
+      url: `${backendUrl}/note/add`,
       method: "post",
       data: { note },
       withCredentials: true,
@@ -41,7 +41,7 @@ const Notes = () => {
 
   const getNotes = async () => {
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/note/get`,
+      url: `${backendUrl}/note/get`,
       method: "get",
       withCredentials: true,
     };
@@ -53,7 +53,7 @@ const Notes = () => {
   const deleteNote = async (id) => {
     setDeleting(true);
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/note/delete`,
+      url: `${backendUrl}/note/delete`,
       method: "delete",
       data: { noteId: id },
       withCredentials: true,

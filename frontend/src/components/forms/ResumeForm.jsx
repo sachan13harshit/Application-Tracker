@@ -12,6 +12,7 @@ const ResumeForm = ({ setTemp, setForm }) => {
 
   const [uploading, setUploading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const backendUrl = "http://localhost:5000";
 
   const onSubmit = async (data) => {
     setUploading(true);
@@ -20,7 +21,7 @@ const ResumeForm = ({ setTemp, setForm }) => {
     formData.append("file", data.file[0]);
 
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/resume/add`,
+      url: `${backendUrl}/resume/add`,
       method: "post",
       data: formData,
       headers: {

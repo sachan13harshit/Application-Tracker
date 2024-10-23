@@ -6,14 +6,15 @@ const AuthContext = createContext();
 export function useAuth() {
   return useContext(AuthContext);
 }
-
 export function AuthProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const backendUrl = "http://localhost:5000";
+
 
   const verifyUser = async () => {
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/auth/verify`,
+      url: `${backendUrl}/auth/verify`,
       method: "get",
       withCredentials: true,
     };

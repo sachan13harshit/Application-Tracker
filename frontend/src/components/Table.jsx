@@ -13,12 +13,12 @@ const Table = ({ data, setTemp }) => {
     { value: "Selected", label: "Selected" },
     { value: "Rejected", label: "Rejected" },
   ];
-
   const [check, setCheck] = useState(false);
   const [updatedStatus, setNewStatus] = useState(statusOptions[0].value);
   const [idupdateStatus, setIdStatus] = useState("");
   const [idDelete, setIdDelete] = useState("");
   const [open, setOpen] = useState(false);
+  const backendUrl = "http://localhost:5000";
 
   function formatDate(isoString) {
     const date = new Date(isoString);
@@ -28,7 +28,7 @@ const Table = ({ data, setTemp }) => {
   const updateStatus = async (applicationId) => {
     setCheck(true);
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/application/update`,
+      url: `${backendUrl}/application/update`,
       method: "patch",
       data: { status: updatedStatus },
       withCredentials: true,
@@ -84,7 +84,7 @@ const Table = ({ data, setTemp }) => {
   };
   const deleteNote = async (id) => {
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/application/rem`,
+      url: `${backendUrl}/application/rem`,
       method: "delete",
       params: {
         applicationId: id,

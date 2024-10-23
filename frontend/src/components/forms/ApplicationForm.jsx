@@ -15,6 +15,7 @@ const statusOptions = [
 const ApplicationForm = ({ setTemp, setForm }) => {
   const [success, setSuccess] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const backendUrl = "http://localhost:5000";
   const {
     register,
     handleSubmit,
@@ -25,7 +26,7 @@ const ApplicationForm = ({ setTemp, setForm }) => {
   const addApplication = async (data) => {
     setUploading(true);
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/application/add`,
+      url: `${backendUrl}/application/add`,
       method: "post",
       withCredentials: true,
       data: data,

@@ -10,7 +10,6 @@ import ResetPass from "./pages/ResetPass";
 
 
 function App() {
-
   return (
     <AuthProvider>
       <BrowserRouter>

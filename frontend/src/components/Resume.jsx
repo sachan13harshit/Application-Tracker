@@ -14,10 +14,10 @@ const Resume = () => {
   const [opening, setOpening] = useState(false);
   const [isSpinner, setSpinner] = useState(true);
   const [actionTxt, setActionTxt] = useState("");
-
+  const backendUrl = "http://localhost:5000";
   const getResumes = async () => {
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/resume/get`,
+      url: `${backendUrl}/resume/get`,
       method: "get",
       withCredentials: true,
     };
@@ -33,7 +33,7 @@ const Resume = () => {
     setActionTxt("Opening");
     setOpening(true);
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/resume/getId`,
+      url: `${backendUrl}/resume/getId`,
       method: "get",
       params: {
         resumeId: id,
@@ -60,7 +60,7 @@ const Resume = () => {
     setActionTxt("Deleting");
     setOpening(true);
     const config = {
-      url: `${process.env.REACT_APP_BACKEND_LINK}/resume/del`,
+      url: `${backendUrl}/resume/del`,
       method: "delete",
       params: {
         resumeId: id,
@@ -133,7 +133,7 @@ const Resume = () => {
         </div>
       ) : (
         <p className="text-3xl md:text-4xl font-semibold text-center economica mt-8 md:mt-0">
-          No resumes found :(
+          No resumes found :
         </p>
       )}
 
