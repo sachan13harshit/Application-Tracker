@@ -10,12 +10,11 @@ const Register = ({ setActiveTab }) => {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
     const [registering, setRegister] = useState(false);
-    const backendUrl = "http://localhost:5000";
     const handleSubmit = (e) => {
       e.preventDefault();
       setRegister(true);
       const config = {
-        url: `${process.env.REACT_APP_BACKEND_URL}/auth/register`,
+        url: `${import.meta.env.VITE_BACKEND_URL}/auth/register`,
         method: "post",
         data: {
           name,

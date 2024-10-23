@@ -18,7 +18,6 @@ const Table = ({ data, setTemp }) => {
   const [idupdateStatus, setIdStatus] = useState("");
   const [idDelete, setIdDelete] = useState("");
   const [open, setOpen] = useState(false);
-  const backendUrl = "http://localhost:5000";
 
   function formatDate(isoString) {
     const date = new Date(isoString);
@@ -28,7 +27,7 @@ const Table = ({ data, setTemp }) => {
   const updateStatus = async (applicationId) => {
     setCheck(true);
     const config = {
-      url: `${backendUrl}/application/update`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/application/update`,
       method: "patch",
       data: { status: updatedStatus },
       withCredentials: true,
@@ -84,7 +83,7 @@ const Table = ({ data, setTemp }) => {
   };
   const deleteNote = async (id) => {
     const config = {
-      url: `${backendUrl}/application/rem`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/application/rem`,
       method: "delete",
       params: {
         applicationId: id,

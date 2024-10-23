@@ -14,10 +14,9 @@ const Resume = () => {
   const [opening, setOpening] = useState(false);
   const [isSpinner, setSpinner] = useState(true);
   const [actionTxt, setActionTxt] = useState("");
-  const backendUrl = "http://localhost:5000";
   const getResumes = async () => {
     const config = {
-      url: `${backendUrl}/resume/get`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/resume/get`,
       method: "get",
       withCredentials: true,
     };
@@ -33,7 +32,7 @@ const Resume = () => {
     setActionTxt("Opening");
     setOpening(true);
     const config = {
-      url: `${backendUrl}/resume/getId`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/resume/getId`,
       method: "get",
       params: {
         resumeId: id,
@@ -60,7 +59,7 @@ const Resume = () => {
     setActionTxt("Deleting");
     setOpening(true);
     const config = {
-      url: `${backendUrl}/resume/del`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/resume/del`,
       method: "delete",
       params: {
         resumeId: id,

@@ -9,11 +9,9 @@ const Applications = () => {
     const [applications, setApplications] = useState([]);
     const [isSpinner, setSpinner] = useState(true);
     const [temp, setTemp] = useState(0);
-    const backendUrl = "http://localhost:5000";
-
     const getData = async () => {
       const config = {
-        url: `${backendUrl}/application/get`,
+        url: `${import.meta.env.VITE_BACKEND_URL}/application/get`,
         method: "get",
         withCredentials: true,
       };
@@ -65,7 +63,7 @@ const Applications = () => {
           <Table data={applications} setTemp={setTemp} />
         ) : (
           <p className="text-3xl md:text-4xl font-semibold text-center economica mt-8 md:mt-0">
-            No applications found :(
+            No applications found : 
           </p>
         )}
       </div>

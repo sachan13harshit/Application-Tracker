@@ -11,7 +11,6 @@ const Notes = () => {
   const [temp, setTemp] = useState(0);
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const backendUrl = "http://localhost:5000";
   const {
     register,
     handleSubmit,
@@ -22,7 +21,7 @@ const Notes = () => {
   const addNote = async (note) => {
     setUploading(true);
     const config = {
-      url: `${backendUrl}/note/add`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/note/add`,
       method: "post",
       data: { note },
       withCredentials: true,
@@ -41,7 +40,7 @@ const Notes = () => {
 
   const getNotes = async () => {
     const config = {
-      url: `${backendUrl}/note/get`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/note/get`,
       method: "get",
       withCredentials: true,
     };
@@ -53,7 +52,7 @@ const Notes = () => {
   const deleteNote = async (id) => {
     setDeleting(true);
     const config = {
-      url: `${backendUrl}/note/delete`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/note/delete`,
       method: "delete",
       data: { noteId: id },
       withCredentials: true,

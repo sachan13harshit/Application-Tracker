@@ -6,7 +6,6 @@ import axios from "axios";
 
 const Navbar = () => {
   const { authUser, setAuthUser } = useAuth();
-  const backendUrl = "http://localhost:5000";
   const MinidenticonImg = ({ username, saturation, lightness, ...props }) => {
     const svgURI = useMemo(
       () =>
@@ -39,7 +38,7 @@ const Navbar = () => {
             <button
               onClick={() => {
                 const config = {
-                  url: `${backendUrl}/auth/logout`,
+                  url: `${import.meta.env.VITE_BACKEND_URL}/auth/logout`,
                   method: "post",
                   withCredentials: true,
                 };

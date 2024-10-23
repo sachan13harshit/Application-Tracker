@@ -15,7 +15,6 @@ const statusOptions = [
 const ApplicationForm = ({ setTemp, setForm }) => {
   const [success, setSuccess] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const backendUrl = "http://localhost:5000";
   const {
     register,
     handleSubmit,
@@ -26,7 +25,7 @@ const ApplicationForm = ({ setTemp, setForm }) => {
   const addApplication = async (data) => {
     setUploading(true);
     const config = {
-      url: `${backendUrl}/application/add`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/application/add`,
       method: "post",
       withCredentials: true,
       data: data,

@@ -23,7 +23,7 @@ const ResetPass = () => {
       setLoading(true);
   
       const config = {
-        url: `${process.env.REACT_APP_BACKEND_LINK}/auth/reset/${token}`,
+        url: `${import.meta.env.VITE_BACKEND_URL}/auth/reset/${token}`,
         method: "post",
         data: {
           password,

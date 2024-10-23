@@ -15,7 +15,6 @@ const Login = ({ setActiveTab }) => {
     const [logging, setLogging] = useState(false);
     const [forgotPass, setForgotPass] = useState(false);
     const { authUser, verifyUser } = useAuth();
-    const backendUrl = "http://localhost:5000";
   
     useEffect(() => {
       if (authUser) {
@@ -27,7 +26,7 @@ const Login = ({ setActiveTab }) => {
       e.preventDefault();
       setLogging(true);
       const config = {
-        url: `${backendUrl}/auth/login`,
+        url: `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +58,7 @@ const Login = ({ setActiveTab }) => {
       e.preventDefault();
       setLogging(true);
       const config = {
-        url: `${backendUrl}/auth/forgot-password`,
+        url: `${import.meta.env.VITE_BACKEND_URL}/auth/forgot-password`,
         method: "post",
         headers: {
           "Content-Type": "application/json",

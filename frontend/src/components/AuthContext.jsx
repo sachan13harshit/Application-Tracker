@@ -9,12 +9,10 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const backendUrl = "http://localhost:5000";
-
 
   const verifyUser = async () => {
     const config = {
-      url: `${backendUrl}/auth/verify`,
+      url: `${import.meta.env.VITE_BACKEND_URL}/auth/verify`,
       method: "get",
       withCredentials: true,
     };
