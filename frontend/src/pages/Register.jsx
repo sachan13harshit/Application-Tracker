@@ -15,7 +15,7 @@ const Register = ({ setActiveTab }) => {
       e.preventDefault();
       setRegister(true);
       const config = {
-        url: `${backendUrl}/auth/register`,
+        url: `${process.env.REACT_APP_BACKEND_URL}/auth/register`,
         method: "post",
         data: {
           name,
