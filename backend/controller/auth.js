@@ -63,13 +63,12 @@ const login = async (req, res) => {
         expiresIn: "1d",
       }
     );
-    res.cookie("accessToken", jwtToken, {
+    res.cookie("token", jwtToken, {
       httpOnly: true,
-      maxAge: 15 * 60 * 1000, // 15 minutes in milliseconds
-      sameSite: process.env.NODE_ENV === "Development" ? "lax" : "none",
-      secure: process.env.NODE_ENV === "Development" ? false : true,
-      path: "/"
-    });
+      maxAge: 15 * 60 * 1000,
+      sameSite: process.env.NODE_ENV === "development" ? "lax" : "none",
+      secure: process.env.NODE_ENV === "development" ? false : true,
+     });
     res.header("Access-Control-Allow-Credentials", "true");
     console.log("cookie sent", jwtToken);
 

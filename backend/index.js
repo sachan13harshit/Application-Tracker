@@ -12,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
+
 dbConnect();
 app.use(express.json());
 app.use(cookieParser());
@@ -24,4 +25,5 @@ app.use("/resume", resumeRoutes); // resume routes
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log('Current NODE_ENV:', process.env.NODE_ENV);
 });
