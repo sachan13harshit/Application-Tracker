@@ -10,7 +10,6 @@ import ResetPass from "./pages/ResetPass";
 
 
 function App() {
-  // console.log(import.meta.env.VITE_BACKEND_URL)
   return (
     <AuthProvider>
       <BrowserRouter>
@@ -31,5 +30,4 @@ function App() {
     </AuthProvider>
   )
 }
-
 export default App;
