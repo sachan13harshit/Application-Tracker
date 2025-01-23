@@ -16,7 +16,11 @@ const PORT = process.env.PORT || 4000;
 dbConnect();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({
+  origin: [process.env.FRONTEND_URL], 
+  methods: ["GET", "PUT", "POST", "DELETE"], 
+  credentials: true,
+}));
 
 
 app.use("/auth", authRoutes); // auth routes
