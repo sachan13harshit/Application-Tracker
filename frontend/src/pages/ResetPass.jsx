@@ -28,8 +28,7 @@ const ResetPass = () => {
         data: {
           password,
           confirmPassword,
-        },
-      };
+        },      };
       axios(config)
         .then((res) => {
           setSuccess(true);
