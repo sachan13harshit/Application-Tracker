@@ -13,16 +13,12 @@ const ErrorHandler = require("../utils/ErrorHandler");
 
       }
       const hashedPassword = await bcrypt.hash(password, 10);
-      user = await User.create({ name, email, password: hashedPassword });
+      user = await User.create({ name , email, password: hashedPassword });
       setCookie(user, res, "Registered Successfully", 201);
     } catch (error) {
       next(error);
     }
 }
-
-
-
-
  const login = async (req, res, next) => {
   try{
     const { email, password } = req.body;
@@ -43,7 +39,7 @@ const ErrorHandler = require("../utils/ErrorHandler");
 
 
 
- const getMyDetails = async (req, res, next) => {
+ const Verify = async (req, res, next) => {
   res.status(200).json({
     success: true,
     user: req.user,
@@ -71,4 +67,4 @@ const ErrorHandler = require("../utils/ErrorHandler");
 
 
 
-module.exports = { register, login, getMyDetails, logout };
+module.exports = { register, login, Verify, logout };

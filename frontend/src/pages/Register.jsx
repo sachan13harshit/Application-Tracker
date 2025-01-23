@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../components/AuthContext";
+import axios from "axios";
 import { Hourglass } from "react-loader-spinner";
 
 const Register = ({ setActiveTab }) => {
@@ -9,30 +9,36 @@ const Register = ({ setActiveTab }) => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  
-  const { register, isLoading } = useAuth();
+  const [registering, setRegister] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError(false);
-    setSuccess(false);
-
-    try {
-      await register({
+    setRegister(true);
+    const config = {
+      url: `${import.meta.env.VITE_BACKEND_URL}/auth/register`,
+      method: "post",
+      data: {
         name,
         email,
         password,
+      },
+    };
+    axios(config)
+      .then((res) => {
+        setSuccess(true);
+        setError(false);
+        setTimeout(() => {
+          setActiveTab(0);
+        }, 2000);
+      })
+      .catch((e) => {
+        setError(true);
+        setSuccess(false);
+        setErrorMsg(e.response?.data.message);
+      })
+      .finally(() => {
+        setRegister(false);
       });
-      setSuccess(true);
-      setError(false);
-      setTimeout(() => {
-        setActiveTab(0);
-      }, 2000);
-    } catch (e) {
-      setError(true);
-      setSuccess(false);
-      setErrorMsg(e.response?.data.message);
-    }
   };
 
   return (
@@ -91,7 +97,7 @@ const Register = ({ setActiveTab }) => {
               required
             />
           </div>
-          {isLoading ? (
+          {registering ? (
             <div className="flex items-center gap-2 justify-center px-4 py-2">
               <span className="text-md font-semibold">Registering</span>
               <Hourglass

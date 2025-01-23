@@ -6,13 +6,13 @@ const {
   login,
   register,
   logout,
-  getMyDetails,
+  Verify,
 } = require("../controller/auth");
 const { isAuthenticated } = require("../middleware/authenticate");
 
 router.post("/login", login);
 router.post("/register", register);
-router.get("/me", isAuthenticated, getMyDetails);
+router.get("/verify", isAuthenticated, Verify);
 router.post("/logout", isAuthenticated, logout);
 
 
