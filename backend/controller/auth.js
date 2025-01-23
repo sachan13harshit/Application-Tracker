@@ -20,6 +20,9 @@ const ErrorHandler = require("../utils/ErrorHandler");
     }
 }
 
+
+
+
  const login = async (req, res, next) => {
   try{
     const { email, password } = req.body;
@@ -37,12 +40,18 @@ const ErrorHandler = require("../utils/ErrorHandler");
   }
 }
 
+
+
+
  const getMyDetails = async (req, res, next) => {
   res.status(200).json({
     success: true,
     user: req.user,
   });
 };
+
+
+
 
  const logout = async (req, res) => {
   res
@@ -57,6 +66,9 @@ const ErrorHandler = require("../utils/ErrorHandler");
       user: req.user,
     });
 };
+
+
+
 
 
 module.exports = { register, login, getMyDetails, logout };
