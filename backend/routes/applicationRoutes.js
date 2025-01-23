@@ -6,10 +6,10 @@ const {
   updateStatus,
   getApplication,
 } = require("../controller/application");
-const { authenticate } = require("../middleware/authenticate");
+const { isAuthenticated } = require("../middleware/authenticate");
 
-router.post("/add", authenticate, addApplication);
-router.delete("/rem", authenticate, deleteApplication);
-router.patch("/update", authenticate, updateStatus);
-router.get("/get", authenticate, getApplication);
+router.post("/add", isAuthenticated, addApplication);
+router.delete("/rem", isAuthenticated, deleteApplication);
+router.patch("/update", isAuthenticated, updateStatus);
+router.get("/get", isAuthenticated, getApplication);
 module.exports = router;

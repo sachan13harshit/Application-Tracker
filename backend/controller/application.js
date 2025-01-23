@@ -8,6 +8,7 @@ const addApplication = async (req, res) => {
 
   try {
     const user = req.user;
+    console.log(user);
     const application = new applicationModel({
       userId: user._id,
       companyName,

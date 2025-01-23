@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 
+
 app.use("/auth", authRoutes); // auth routes
 app.use("/application", applicationRoutes); // application routes
 app.use("/note", noteRoutes); // note routes

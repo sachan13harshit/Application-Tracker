@@ -4,7 +4,7 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-const { authenticate } = require("../middleware/authenticate");
+const { isAuthenticated } = require("../middleware/authenticate");
 const {
   addResume,
   displayResume,
@@ -12,8 +12,8 @@ const {
   deleteResume,
 } = require("../controller/resume");
 
-router.post("/add", upload.single("file"), authenticate, addResume);
-router.get("/get", authenticate, displayResume);
-router.get("/getId", authenticate, getResume);
-router.delete("/del", authenticate, deleteResume);
+router.post("/add", upload.single("file"), isAuthenticated, addResume);
+router.get("/get", isAuthenticated, displayResume);
+router.get("/getId", isAuthenticated, getResume);
+router.delete("/del", isAuthenticated, deleteResume);
 module.exports = router;

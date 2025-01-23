@@ -5,20 +5,15 @@ const router = express.Router();
 const {
   login,
   register,
-  verify,
   logout,
-  forgotPassword,
-  handleResetPassword,
-  getAllUsers,
+  getMyDetails,
 } = require("../controller/auth");
-const { authenticate } = require("../middleware/authenticate");
+const { isAuthenticated } = require("../middleware/authenticate");
 
 router.post("/login", login);
 router.post("/register", register);
-router.get("/verify", authenticate, verify);
-router.get("/all-users", getAllUsers);
-router.post("/logout", authenticate, logout);
-router.post("/forgot-password", forgotPassword);
-router.post("/reset/:token", handleResetPassword);
+router.get("/me", isAuthenticated, getMyDetails);
+router.post("/logout", isAuthenticated, logout);
+
 
 module.exports = router;

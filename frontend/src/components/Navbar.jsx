@@ -6,6 +6,7 @@ import axios from "axios";
 
 const Navbar = () => {
   const { authUser, setAuthUser } = useAuth();
+  console.log("afhyuhs" , authUser.name , authUser);
   const MinidenticonImg = ({ username, saturation, lightness, ...props }) => {
     const svgURI = useMemo(
       () =>
